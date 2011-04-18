@@ -23,3 +23,100 @@
 
 #include <clens.h>
 
+#ifdef NEED_ARC4RANDOM_BUF
+void
+arc4random_buf(void *buf, size_t nbytes)
+{
+	uint32_t		data;
+	uint8_t			data8;
+	uint8_t			*buf8 = buf;
+
+	while (nbytes > 0) {
+		data = arc4random();
+		switch(nbytes) {
+		default:
+			/* fallthru */
+		case 4:
+			data8 = data & 0xff;
+			data = data >> 8;
+			*buf8++ = data8;
+			/* fallthru */
+		case 3:
+			data8 = data & 0xff;
+			data = data >> 8;
+			*buf8++ = data8;
+			/* fallthru */
+		case 2:
+			data8 = data & 0xff;
+			data = data >> 8;
+			*buf8++ = data8;
+			/* fallthru */
+		case 1:
+			data8 = data & 0xff;
+			*buf8++ = data8;
+			break;
+		}
+		nbytes -= 4;
+	}
+}
+#endif /* NEED_ARC4RANDOM_BUF */
+
+#ifdef NEED_STRNVIS
+#include <vis.h>
+#define isoctal(c)	(((u_char)(c)) >= '0' && ((u_char)(c)) <= '7')
+#define isvisible(c)							\
+	(((uint)(c) <= UCHAR_MAX && isascii((u_char)(c)) &&		\
+	(((c) != '*' && (c) != '?' && (c) != '[' && (c) != '#') ||	\
+		(flag & VIS_GLOB) == 0) && isgraph((u_char)(c))) ||	\
+	((flag & VIS_SP) == 0 && (c) == ' ') ||				\
+	((flag & VIS_TAB) == 0 && (c) == '\t') ||			\
+	((flag & VIS_NL) == 0 && (c) == '\n') ||			\
+	((flag & VIS_SAFE) && ((c) == '\b' ||				\
+		(c) == '\007' || (c) == '\r' ||				\
+		isgraph((u_char)(c)))))
+
+
+int
+strnvis(char *dst, const char *src, size_t siz, int flag)
+{
+	char *start, *end;
+	char tbuf[5];
+	int c, i;
+
+	i = 0;
+	for (start = dst, end = start + siz - 1; (c = *src) && dst < end; ) {
+		if (isvisible(c)) {
+			i = 1;
+			*dst++ = c;
+			if (c == '\\' && (flag & VIS_NOSLASH) == 0) {
+				/* need space for the extra '\\' */
+				if (dst < end)
+					*dst++ = '\\';
+				else {
+					dst--;
+					i = 2;
+					break;
+				}
+			}
+			src++;
+		} else {
+			i = vis(tbuf, c, flag, *++src) - tbuf;
+			if (dst + i <= end) {
+				memcpy(dst, tbuf, i);
+				dst += i;
+			} else {
+				src--;
+				break;
+			}
+		}
+	}
+	if (siz > 0)
+		*dst = '\0';
+	if (dst + i > end) {
+		/* adjust return value for truncation */
+		while ((c = *src))
+			dst += vis(tbuf, c, flag, *++src) - tbuf;
+	}
+	return (dst - start);
+}
+#endif /* NEED_STRNVIS */
