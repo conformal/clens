@@ -25,6 +25,7 @@
 #define SA_LEN(x)      ((x)->sa_len)
 #define __dead __dead2
 
+#include <string.h>
 #define NEED_ARC4RANDOM_BUF
 void arc4random_buf(void *buf, size_t nbytes);
 #define NEED_STRNVIS
