@@ -3,6 +3,7 @@
 LOCALBASE?=/usr/local
 BINDIR=${LOCALBASE}/bin
 LIBDIR=${LOCALBASE}/lib
+INCDIR=${LOCALBASE}/include
 
 LIB= clens
 SRCS= clens.c
@@ -11,7 +12,7 @@ CFLAGS+= -fdiagnostics-show-option -Wall -Werror
 .else
 CFLAGS+= -Wall -Werror
 .endif
-CFLAGS+= -ggdb3 -I${.CURDIR} -I/usr/local/include
+CFLAGS+= -ggdb3 -I${.CURDIR} -I${INCDIR}
 
 HDRS= clens.h
 
