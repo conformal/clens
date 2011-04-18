@@ -1,4 +1,4 @@
-# $clens $
+# $clens$
 
 LOCALBASE?=/usr/local
 BINDIR?=${LOCALBASE}/bin
