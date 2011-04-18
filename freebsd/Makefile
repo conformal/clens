@@ -8,7 +8,7 @@ INCDIR?=${LOCALBASE}/include
 .PATH: ${.CURDIR}/..
 
 LIB= clens
-SRCS= clens.c
+SRCS= arc4random_buf.c strnvis.c
 NO_PIC=
 .if defined(${COMPILER_VERSION})  &&  ${COMPILER_VERSION:L} == "gcc4"
 CFLAGS+= -fdiagnostics-show-option -Wall -Werror

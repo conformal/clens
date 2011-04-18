@@ -6,7 +6,7 @@ LIBDIR?=${LOCALBASE}/lib
 INCDIR?=${LOCALBASE}/include
 
 LIB= clens
-SRCS= clens.c
+SRCS= arc4random_buf.c strnvis.c
 NOPIC=
 .if defined(${COMPILER_VERSION})  &&  ${COMPILER_VERSION:L} == "gcc4"
 CFLAGS+= -fdiagnostics-show-option -Wall -Werror

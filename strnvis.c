@@ -1,7 +1,6 @@
 /* $clens$ */
 /*
- * Copyright (c) 2010 Conformal Systems LLC <info@conformal.com>
- * All rights reserved.
+ * Copyright (c) 2011 Conformal Systems LLC <info@conformal.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -16,58 +15,15 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-/*
- * This file contains functions to bring the OS into focus
- * so that the source can build on any supported platform.
- */
-
 #include <clens.h>
+
+#ifdef NEED_STRNVIS
 
 #include <string.h>
 #include <ctype.h>
 #include <limits.h>
-#include <stdlib.h>
 #include <sys/types.h>
 
-#ifdef NEED_ARC4RANDOM_BUF
-void
-arc4random_buf(void *buf, size_t nbytes)
-{
-	uint32_t		data;
-	uint8_t			data8;
-	uint8_t			*buf8 = buf;
-
-	while (nbytes > 0) {
-		data = arc4random();
-		switch(nbytes) {
-		default:
-			/* fallthru */
-		case 4:
-			data8 = data & 0xff;
-			data = data >> 8;
-			*buf8++ = data8;
-			/* fallthru */
-		case 3:
-			data8 = data & 0xff;
-			data = data >> 8;
-			*buf8++ = data8;
-			/* fallthru */
-		case 2:
-			data8 = data & 0xff;
-			data = data >> 8;
-			*buf8++ = data8;
-			/* fallthru */
-		case 1:
-			data8 = data & 0xff;
-			*buf8++ = data8;
-			break;
-		}
-		nbytes -= 4;
-	}
-}
-#endif /* NEED_ARC4RANDOM_BUF */
-
-#ifdef NEED_STRNVIS
 #include <vis.h>
 #define isoctal(c)	(((u_char)(c)) >= '0' && ((u_char)(c)) <= '7')
 #define isvisible(c)							\
