@@ -7,6 +7,7 @@ INCDIR=${LOCALBASE}/include
 
 LIB= clens
 SRCS= clens.c
+NOPIC=
 .if defined(${COMPILER_VERSION})  &&  ${COMPILER_VERSION:L} == "gcc4"
 CFLAGS+= -fdiagnostics-show-option -Wall -Werror
 .else
