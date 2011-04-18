@@ -1,9 +1,9 @@
 # $clens$
 
 LOCALBASE?=/usr/local
-BINDIR=${LOCALBASE}/bin
-LIBDIR=${LOCALBASE}/lib
-INCDIR=${LOCALBASE}/include
+BINDIR?=${LOCALBASE}/bin
+LIBDIR?=${LOCALBASE}/lib
+INCDIR?=${LOCALBASE}/include
 
 LIB= clens
 SRCS= clens.c
@@ -19,9 +19,9 @@ HDRS= clens.h
 
 afterinstall:
 	@cd ${.CURDIR}; for i in ${HDRS}; do \
-	cmp -s $$i ${LOCALBASE}/include/$$i || \
-	${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${DESTDIR}${LOCALBASE}/include; \
-	echo ${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${DESTDIR}${LOCALBASE}/include;\
+	cmp -s $$i ${INCDIR}/$$i || \
+	${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR}/; \
+	echo ${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR};\
 	done
 
 .include <bsd.own.mk>
