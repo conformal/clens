@@ -29,10 +29,26 @@
 #define NEED_STRNVIS
 #endif /* __FreeBSD__ */
 
-#ifdef NEED_ARC4RNADOM_BUF
+#ifdef __linux__
+#include <stdlib.h>
+#define NEED_ARC4RANDOM_BUF
+#define NEED_STRNVIS
+#define NEED_STRLCAT
+#define NEED_STRLCPY
+#endif /* __linux__ */
+
+#ifdef NEED_ARC4RANDOM_BUF
 void arc4random_buf(void *buf, size_t nbytes);
-#endif /* NEED_ARC4RNADOM_BUF */
+#endif /* NEED_ARC4RANDOM_BUF */
 
 #ifdef NEED_STRNVIS
 int strnvis(char *dst, const char *src, size_t siz, int flag);
 #endif /* NEED_STRNVIS */
+
+#ifdef NEED_STRLCAT
+size_t strlcat(char *, const char *, size_t);
+#endif /* NEED_STRLCAT */
+
+#ifdef NEED_STRLCPY
+size_t strlcpy(char *, const char *, size_t);
+#endif /* NEED_STRLCPY */

@@ -20,7 +20,12 @@
 #ifdef NEED_ARC4RANDOM_BUF
 
 #include <stdlib.h>
+#include <stdint.h>
 #include <sys/types.h>
+
+#ifdef __linux__
+#include <bsd/stdlib.h>
+#endif
 
 void
 arc4random_buf(void *buf, size_t nbytes)

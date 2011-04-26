@@ -1,27 +1,43 @@
 # $clens$
 
+SYSTEM != uname -s
+.if exists(${.CURDIR}/config/Makefile.$(SYSTEM:L))
+.include "${.CURDIR}/config/Makefile.$(SYSTEM:L)"
+.endif
+
 LOCALBASE?=/usr/local
 BINDIR?=${LOCALBASE}/bin
 LIBDIR?=${LOCALBASE}/lib
 INCDIR?=${LOCALBASE}/include
 
+.PATH: $(.CURDIR)/src
+
 LIB= clens
 SRCS= arc4random_buf.c strnvis.c
-NOPIC=
 .if defined(${COMPILER_VERSION})  &&  ${COMPILER_VERSION:L} == "gcc4"
 CFLAGS+= -fdiagnostics-show-option -Wall -Werror
 .else
 CFLAGS+= -Wall -Werror
 .endif
-CFLAGS+= -ggdb3 -I${.CURDIR} -I${INCDIR}
+CFLAGS+= -ggdb3 -I${.CURDIR}/include -I${INCDIR}
 
 HDRS= clens.h
 
 afterinstall:
-	@cd ${.CURDIR}; for i in ${HDRS}; do \
+	@cd ${.CURDIR}/include; for i in ${HDRS}; do \
 	cmp -s $$i ${INCDIR}/$$i || \
 	${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR}/; \
 	echo ${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR};\
+	done
+
+uninstall:
+	@for i in $(HDRS); do \
+	echo rm -f ${INCDIR}/$$i ;\
+	rm -f ${INCDIR}/$$i; \
+	done
+	@for i in $(_LIBS); do \
+	echo rm -f ${LIBDIR}/$$i ;\
+	rm -f ${LIBDIR}/$$i; \
 	done
 
 .include <bsd.own.mk>
