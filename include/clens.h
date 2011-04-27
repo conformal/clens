@@ -30,6 +30,9 @@
 #endif /* __FreeBSD__ */
 
 #ifdef __linux__
+#define SA_LEN(x)      sizeof(struct sockaddr)
+#define __dead 
+
 #include <stdlib.h>
 #define NEED_ARC4RANDOM_BUF
 #define NEED_STRNVIS
