@@ -34,10 +34,13 @@
 #define __dead 
 
 #include <stdlib.h>
+#define NO_UTIL_H
+
 #define NEED_ARC4RANDOM_BUF
 #define NEED_STRNVIS
 #define NEED_STRLCAT
 #define NEED_STRLCPY
+#define NEED_FMT_SCALED
 #endif /* __linux__ */
 
 #ifdef NEED_ARC4RANDOM_BUF
@@ -55,3 +58,9 @@ size_t strlcat(char *, const char *, size_t);
 #ifdef NEED_STRLCPY
 size_t strlcpy(char *, const char *, size_t);
 #endif /* NEED_STRLCPY */
+
+#ifdef NEED_FMT_SCALED
+#define	FMT_SCALED_STRSIZE	7	/* minus sign, 4 digits, suffix, null byte */
+
+int fmt_scaled(long long number, char *result);
+#endif /* NEED_FMT_SCALED */

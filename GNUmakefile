@@ -22,7 +22,7 @@ vpath %.c src
 vpath %.h include
 
 LIB.NAME = clens
-LIB.SRCS = arc4random_buf.c strnvis.c strlcat.c strlcpy.c
+LIB.SRCS = arc4random_buf.c strnvis.c strlcat.c strlcpy.c fmt_scaled.c
 LIB.HEADERS = clens.h
 LIB.OBJS = $(addprefix $(OBJPREFIX), $(LIB.SRCS:.c=.o))
 LIB.STATIC = lib$(LIB.NAME).a
