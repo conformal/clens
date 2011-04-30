@@ -19,7 +19,7 @@ CFLAGS+= -fdiagnostics-show-option -Wall -Werror
 .else
 CFLAGS+= -Wall -Werror
 .endif
-CFLAGS+= -ggdb3 -I${.CURDIR}/include -I${INCDIR}
+CFLAGS+= -ggdb3 -I${.CURDIR}/include/clens -I${INCDIR}
 
 HDRS= clens.h
 
@@ -40,5 +40,4 @@ uninstall:
 	rm -f ${LIBDIR}/$$i; \
 	done
 
-.include <bsd.own.mk>
 .include <bsd.lib.mk>
