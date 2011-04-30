@@ -1,58 +1,89 @@
 # $clens$
 
-LOCALBASE ?= /usr/local
-BINDIR ?= ${LOCALBASE}/bin
-LIBDIR ?= ${LOCALBASE}/lib
-INCDIR ?= ${LOCALBASE}/include
-OBJPREFIX ?= obj/
+LIB.NAME = clens
+LIB.SRCS = arc4random_buf.c strnvis.c strlcat.c strlcpy.c fmt_scaled.c
+LIB.HEADERS = clens/clens.h 
+LIB.HDRDIRS = clens
 
-# Clear object directory prefix if it doesn't exist.
-ifeq "$(wildcard $(OBJPREFIX))" ""
-	OBJPREFIX =	
-endif
-
-CC = gcc
-INCFLAGS += -I include
+CPPFLAGS +=
+INCFLAGS += -I include/clens
 WARNFLAGS += -Wall -Werror
 DEBUG += -g
 CFLAGS += $(INCFLAGS) $(WARNFLAGS) $(DEBUG)
 LDFLAGS += 
 
+
+# Attempt to include platform specific makefile.
+# OSNAME may be passed in.
+OSNAME ?= $(shell uname -s)
+OSNAME := $(shell echo $(OSNAME) | tr A-Z a-z)
+-include config/Makefile.$(OSNAME)
+
+# Default paths.
+LOCALBASE ?= /usr/local
+BINDIR ?= ${LOCALBASE}/bin
+LIBDIR ?= ${LOCALBASE}/lib
+INCDIR ?= ${LOCALBASE}/include
+
+# Use obj directory if it exists.
+OBJPREFIX ?= obj/
+ifeq "$(wildcard $(OBJPREFIX))" ""
+	OBJPREFIX =	
+endif
+
+# System utils.
+AR ?= ar
+CC ?= gcc
+INSTALL ?= install
+LN ?= ln
+LNFLAGS ?= -sf
+MKDIR ?= mkdir
+RM ?= rm -f
+RMDIR ?= rm -rf
+
 vpath %.c src
 vpath %.h include
 
-LIB.NAME = clens
-LIB.SRCS = arc4random_buf.c strnvis.c strlcat.c strlcpy.c fmt_scaled.c
-LIB.HEADERS = clens.h
 LIB.OBJS = $(addprefix $(OBJPREFIX), $(LIB.SRCS:.c=.o))
-LIB.STATIC = lib$(LIB.NAME).a
+LIB.DEPS = $(addsuffix .depend, $(LIB.OBJS))
 
 all: $(OBJPREFIX)$(LIB.STATIC)
 
 obj:
-	-mkdir obj
+	-$(MKDIR) obj
 
 $(OBJPREFIX)$(LIB.STATIC): $(LIB.OBJS)
-	$(AR) crs $@ $^
+	$(AR) $(ARFLAGS) $@ $^
 
 $(OBJPREFIX)%.o: %.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< 
+	@echo "Generating $@.depend"
+	@$(CC) $(INCFLAGS) -MM $(CPPFLAGS) $< | \
+	sed 's,$*\.o[ :]*,$@ $@.depend : ,g' > $@.depend
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $< 
 
-depend: $(LIB.SRCS)
-	$(CC) $(INCFLAGS) -MM $^ > $(OBJPREFIX).depend
+depend:
+	@echo "Dependencies are automatically generated.  This target is not necessary."	
 
 install:
 	install -m 0644 $(OBJPREFIX)$(LIB.STATIC) $(LIBDIR)/
-	install -m 0644 include/$(LIB.HEADERS) $(INCDIR)/
+	@for d in $(LIB.HDRDIRS); do \
+		echo "install -d -m 0755 $(INCDIR)/$$d"; \
+		install -d -m 0755 $(INCDIR)/$$d; \
+	done
+	@for hdr in $(LIB.HEADERS); do \
+		echo "install -m 0644 include/$$hdr $(INCDIR)/$$hdr"; \
+		install -m 0644 include/$$hdr  $(INCDIR)/$$hdr; \
+	done
 	
 uninstall:
-	rm -f $(LIBDIR)/$(LIB.STATIC)
-	(cd $(INCDIR)/ && rm -f $(LIB.HEADERS))
+	$(RM) $(LIBDIR)/$(LIB.STATIC)
+	(cd $(INCDIR)/ && $(RM) $(LIB.HEADERS))
+	(cd $(INCDIR)/ && $(RMDIR) $(LIB.HDRDIRS))
 	
 clean:
-	rm -f $(LIB.OBJS)
-	rm -f $(OBJPREFIX)$(LIB.STATIC)
-	rm -f $(OBJPREFIX).depend
+	$(RM) $(LIB.OBJS)
+	$(RM) $(OBJPREFIX)$(LIB.STATIC)
+	$(RM) $(OBJPREFIX).depend
 
 
 .PHONY: clean depend install uninstall
