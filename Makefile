@@ -21,7 +21,7 @@ CFLAGS+= -Wall -Werror
 .endif
 CFLAGS+= -ggdb3 -I${.CURDIR}/include/clens -I${INCDIR}
 
-HDRS= clens.h
+HDRS= clens/clens.h
 
 afterinstall:
 	@cd ${.CURDIR}/include; for i in ${HDRS}; do \
