@@ -25,8 +25,11 @@
 #define __dead __dead2
 
 #include <string.h>
+#define NO_UTIL_H
+
 #define NEED_ARC4RANDOM_BUF
 #define NEED_STRNVIS
+#define NEED_FMT_SCALED
 #endif /* __FreeBSD__ */
 
 #ifdef __linux__

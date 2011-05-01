@@ -24,10 +24,11 @@ CFLAGS+= -ggdb3 -I${.CURDIR}/include/clens -I${INCDIR}
 HDRS= clens/clens.h
 
 afterinstall:
+	${INSTALL} -d -m 0755 ${INCDIR}/clens
 	@cd ${.CURDIR}/include; for i in ${HDRS}; do \
 	cmp -s $$i ${INCDIR}/$$i || \
-	${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR}/; \
-	echo ${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR};\
+	${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR}/$$i; \
+	echo ${INSTALL} ${INSTALL_COPY} -m 444 -o $(BINOWN) -g $(BINGRP) $$i ${INCDIR}/$$i; \
 	done
 
 uninstall:
@@ -39,5 +40,6 @@ uninstall:
 	echo rm -f ${LIBDIR}/$$i ;\
 	rm -f ${LIBDIR}/$$i; \
 	done
+	rm -rf ${INCDIR}/clens
 
 .include <bsd.lib.mk>
