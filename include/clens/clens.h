@@ -35,6 +35,7 @@
 #ifdef __linux__
 #define SA_LEN(x)      sizeof(struct sockaddr)
 #define __dead 
+#define __packed	__attribute__((__packed__))
 
 #include <stdlib.h>
 #define NO_UTIL_H
