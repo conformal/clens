@@ -37,6 +37,7 @@
 #define __dead 
 #define __packed	__attribute__((__packed__))
 
+#include <stdio.h>
 #include <stdlib.h>
 #define NO_UTIL_H
 
@@ -45,6 +46,8 @@
 #define NEED_STRLCAT
 #define NEED_STRLCPY
 #define NEED_FMT_SCALED
+#define NEED_FGETLN
+#define NEED_FPARSELN
 #endif /* __linux__ */
 
 #ifdef NEED_ARC4RANDOM_BUF
@@ -68,3 +71,11 @@ size_t strlcpy(char *, const char *, size_t);
 
 int fmt_scaled(long long number, char *result);
 #endif /* NEED_FMT_SCALED */
+
+#ifdef NEED_FGETLN
+char *fgetln(FILE *, size_t *);
+#endif /* NEED_FGETLN */
+
+#ifdef NEED_FPARSELN
+char *fparseln(FILE *, size_t *, size_t *, const char [3], int);
+#endif /* NEED_FPARSELN */
