@@ -13,7 +13,7 @@ INCDIR?=${LOCALBASE}/include
 .PATH: $(.CURDIR)/src
 
 LIB= clens
-SRCS= arc4random_buf.c strnvis.c
+SRCS+= arc4random_buf.c strnvis.c 
 .if defined(${COMPILER_VERSION})  &&  ${COMPILER_VERSION:L} == "gcc4"
 CFLAGS+= -fdiagnostics-show-option -Wall -Werror
 .else

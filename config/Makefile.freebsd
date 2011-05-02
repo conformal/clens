@@ -1,3 +1,4 @@
 # $clens$
 NO_PIC=
 NO_OBJ=
+SRCS+= fmt_scaled.c
