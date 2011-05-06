@@ -20,16 +20,23 @@
  * so that the source can build on any supported platform.
  */
 
+#ifndef CLENS_H
+#define CLENS_H
+
 #ifdef __FreeBSD__
 #define SA_LEN(x)      ((x)->sa_len)
 #define __dead __dead2
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #define NO_UTIL_H
 
 #define NEED_ARC4RANDOM_BUF
 #define NEED_STRNVIS
 #define NEED_FMT_SCALED
+#define NEED_FGETLN
+#define NEED_FPARSELN
 #endif /* __FreeBSD__ */
 
 #ifdef __linux__
@@ -79,3 +86,5 @@ char *fgetln(FILE *, size_t *);
 #ifdef NEED_FPARSELN
 char *fparseln(FILE *, size_t *, size_t *, const char [3], int);
 #endif /* NEED_FPARSELN */
+
+#endif /* CLENS_H */
