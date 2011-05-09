@@ -66,14 +66,14 @@ depend:
 	@echo "Dependencies are automatically generated.  This target is not necessary."	
 
 install:
-	install -m 0644 $(OBJPREFIX)$(LIB.STATIC) $(LIBDIR)/
+	$(INSTALL) -m 0644 $(OBJPREFIX)$(LIB.STATIC) $(LIBDIR)/
 	@for d in $(LIB.HDRDIRS); do \
-		echo "install -d -m 0755 $(INCDIR)/$$d"; \
-		install -d -m 0755 $(INCDIR)/$$d; \
+		echo "$(INSTALL) -d -m 0755 $(INCDIR)/$$d"; \
+		$(INSTALL) -d -m 0755 $(INCDIR)/$$d; \
 	done
 	@for hdr in $(LIB.HEADERS); do \
-		echo "install -m 0644 include/$$hdr $(INCDIR)/$$hdr"; \
-		install -m 0644 include/$$hdr  $(INCDIR)/$$hdr; \
+		echo "$(INSTALL) -m 0644 include/$$hdr $(INCDIR)/$$hdr"; \
+		$(INSTALL) -m 0644 include/$$hdr  $(INCDIR)/$$hdr; \
 	done
 	
 uninstall:
