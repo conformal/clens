@@ -2,3 +2,5 @@
 NO_PIC=
 NO_OBJ=
 SRCS+= fmt_scaled.c fgetln.c fparseln.c
+HDRS+= clens/sys/tree.h clens/sys/queue.h
+HDRDIRS+= clens/sys
