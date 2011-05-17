@@ -55,6 +55,7 @@
 #define NEED_FMT_SCALED
 #define NEED_FGETLN
 #define NEED_FPARSELN
+
 #endif /* __linux__ */
 
 #ifdef NEED_ARC4RANDOM_BUF

@@ -3,6 +3,6 @@
 ARFLAGS = crs
 
 LIB.STATIC = lib$(LIB.NAME).a
-LIB.HEADERS += clens/sys/tree.h clens/sys/queue.h
+LIB.HEADERS += clens/readpassphrase.h clens/sys/tree.h clens/sys/queue.h
 LIB.HDRDIRS += clens/sys
 
