@@ -40,9 +40,12 @@
 #endif /* __FreeBSD__ */
 
 #ifdef __linux__
-#define SA_LEN(x)      sizeof(struct sockaddr)
+#define SA_LEN(x)	sizeof(struct sockaddr)
 #define __dead 
 #define __packed	__attribute__((__packed__))
+#ifndef PASS_MAX
+#define PASS_MAX	1024
+#endif /* PASS_MAX */
 
 #include <stdio.h>
 #include <stdlib.h>
