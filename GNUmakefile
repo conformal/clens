@@ -1,8 +1,8 @@
 # $clens$
 
 LIB.NAME = clens
-LIB.SRCS = arc4random_buf.c strnvis.c strlcat.c strlcpy.c fmt_scaled.c
-LIB.SRCS += fgetln.c fparseln.c
+LIB.SRCS = clens.c arc4random_buf.c strnvis.c strlcat.c strlcpy.c
+LIB.SRCS += fmt_scaled.c fgetln.c fparseln.c
 LIB.HEADERS = clens/clens.h 
 LIB.HDRDIRS = clens
 

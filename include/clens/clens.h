@@ -23,6 +23,14 @@
 #ifndef CLENS_H
 #define CLENS_H
 
+/* versioning */
+#define CLENS_VERSION_MAJOR	0
+#define CLENS_VERSION_MINOR	0
+#define CLENS_VERSION_PATCH	5
+#define CLENS_VERSION		"0.0.5"
+
+void	clens_version(int *major, int *minor, int *patch);
+
 #ifdef __FreeBSD__
 #define SA_LEN(x)      ((x)->sa_len)
 #define __dead __dead2
