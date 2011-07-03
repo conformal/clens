@@ -21,6 +21,7 @@ OSNAME := $(shell echo $(OSNAME) | tr A-Z a-z)
 -include config/Makefile.$(OSNAME)
 
 # Default paths.
+DESTDIR ?=
 LOCALBASE ?= /usr/local
 BINDIR ?= ${LOCALBASE}/bin
 LIBDIR ?= ${LOCALBASE}/lib
@@ -66,21 +67,22 @@ depend:
 	@echo "Dependencies are automatically generated.  This target is not necessary."	
 
 install:
-	$(INSTALL) -m 0644 $(OBJPREFIX)$(LIB.STATIC) $(LIBDIR)/
+	$(INSTALL) -m 0755 -d $(DESTDIR)$(LIBDIR)/
+	$(INSTALL) -m 0644 $(OBJPREFIX)$(LIB.STATIC) $(DESTDIR)$(LIBDIR)/
 	@for d in $(LIB.HDRDIRS); do \
-		echo "$(INSTALL) -d -m 0755 $(INCDIR)/$$d"; \
-		$(INSTALL) -d -m 0755 $(INCDIR)/$$d; \
+		echo "$(INSTALL) -d -m 0755 $(DESTDIR)$(INCDIR)/$$d"; \
+		$(INSTALL) -d -m 0755 $(DESTDIR)$(INCDIR)/$$d; \
 	done
 	@for hdr in $(LIB.HEADERS); do \
-		echo "$(INSTALL) -m 0644 include/$$hdr $(INCDIR)/$$hdr"; \
-		$(INSTALL) -m 0644 include/$$hdr  $(INCDIR)/$$hdr; \
+		echo "$(INSTALL) -m 0644 include/$$hdr $(DESTDIR)$(INCDIR)/$$hdr"; \
+		$(INSTALL) -m 0644 include/$$hdr $(DESTDIR)$(INCDIR)/$$hdr; \
 	done
-	
+
 uninstall:
-	$(RM) $(LIBDIR)/$(LIB.STATIC)
-	(cd $(INCDIR)/ && $(RM) $(LIB.HEADERS))
-	(cd $(INCDIR)/ && $(RMDIR) $(LIB.HDRDIRS))
-	
+	$(RM) $(DESTDIR)$(LIBDIR)/$(LIB.STATIC)
+	$(RM) $(addprefix $(DESTDIR)$(INCDIR)/, $(LIB.HEADERS))
+	$(RMDIR) $(addprefix $(DESTDIR)$(INCDIR)/, $(LIB.HDRDIRS))
+
 clean:
 	$(RM) $(LIB.OBJS)
 	$(RM) $(OBJPREFIX)$(LIB.STATIC)
