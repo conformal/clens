@@ -14,6 +14,7 @@ URL:		http://opensource.conformal.com/wiki/clens
 Source: 	%{name}-%{version}.tar.gz
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 Prefix: 	/usr
+Requires:	libbsd
 
 %description
 clens is a convenience library to aid in porting code from OpenBSD to different
@@ -33,8 +34,9 @@ make install DESTDIR=$RPM_BUILD_ROOT LOCALBASE=/usr
 
 
 %package devel
-Summary: Libraries and header files to develop applications using clens
-Group: Development/Libraries
+Summary:	Libraries and header files to develop applications using clens
+Group:		Development/Libraries
+Requires:	libbsd-devel
 
 %description devel
 This package contains the libraries, include files, and documentation to
