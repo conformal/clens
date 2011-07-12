@@ -1,0 +1,20 @@
+Source: clens
+Priority: optional
+Maintainer: Conformal Systems LLC <package-discuss@conformal.com>
+Build-Depends: debhelper (>= 7), libc6-dev, locales
+Standards-Version: 3.8.3
+Section: libs
+Homepage: http://opensource.conformal.com/wiki/clens
+
+Package: libclens-dev
+Section: libdevel
+Architecture: any
+Depends: libbsd-dev
+Description: Convenience library to aid in porting OpenBSD code - development
+ This package contains the libraries, include files, and documentation
+ to develop applications with clens.
+ clens is a convenience library to aid in porting code from OpenBSD to different
+ operating systems. Operating systems traditionally have different enough APIs
+ that porting code is painful and can litter pretty code with ugly #ifdef goo.
+ In order to keep code readable and drastically reduce the number of #ifdefs
+ needed, clens brings other APIs or missing functions into specific OS "focus".
