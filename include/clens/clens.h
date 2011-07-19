@@ -31,6 +31,8 @@
 
 void	clens_version(int *major, int *minor, int *patch);
 
+#include <sys/time.h>
+
 #ifdef __FreeBSD__
 #define SA_LEN(x)      ((x)->sa_len)
 #define __dead __dead2
@@ -68,6 +70,13 @@ void	clens_version(int *major, int *minor, int *patch);
 #define NEED_FPARSELN
 
 #endif /* __linux__ */
+
+#ifndef timespeccmp
+#define	timespeccmp(tsp, usp, cmp)					\
+	(((tsp)->tv_sec == (usp)->tv_sec) ?				\
+	    ((tsp)->tv_nsec cmp (usp)->tv_nsec) :			\
+	    ((tsp)->tv_sec cmp (usp)->tv_sec))
+#endif
 
 #ifdef NEED_ARC4RANDOM_BUF
 void arc4random_buf(void *buf, size_t nbytes);
