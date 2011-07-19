@@ -89,6 +89,7 @@ size_t strlcpy(char *, const char *, size_t);
 #define	FMT_SCALED_STRSIZE	7	/* minus sign, 4 digits, suffix, null byte */
 
 int fmt_scaled(long long number, char *result);
+int scan_scaled(char *scaled, long long *result);
 #endif /* NEED_FMT_SCALED */
 
 #ifdef NEED_FGETLN
