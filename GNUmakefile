@@ -86,7 +86,7 @@ uninstall:
 clean:
 	$(RM) $(LIB.OBJS)
 	$(RM) $(OBJPREFIX)$(LIB.STATIC)
-	$(RM) $(OBJPREFIX).depend
+	$(RM) $(LIB.DEPS)
 
 
 .PHONY: clean depend install uninstall
