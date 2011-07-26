@@ -1,3 +1,10 @@
+clens (0.1.0-1) unstable; urgency=low
+
+  * Add prototype for scan_scaled
+  * Define timespeccmp for platforms that need it
+
+ -- Conformal Systems <package-discuss@conformal.com>  Tue, 26 Jul 2011 15:40:19 -0500
+
 clens (0.0.5-1) unstable; urgency=low
 
   * Initial release

@@ -25,9 +25,9 @@
 
 /* versioning */
 #define CLENS_VERSION_MAJOR	0
-#define CLENS_VERSION_MINOR	0
-#define CLENS_VERSION_PATCH	5
-#define CLENS_VERSION		"0.0.5"
+#define CLENS_VERSION_MINOR	1
+#define CLENS_VERSION_PATCH	0
+#define CLENS_VERSION		"0.1.0"
 
 void	clens_version(int *major, int *minor, int *patch);
 

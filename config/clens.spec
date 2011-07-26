@@ -1,7 +1,7 @@
 # $clens$
 
 %define name		clens
-%define version		0.0.5
+%define version		0.1.0
 %define release		1
 
 Name: 		%{name}
@@ -48,5 +48,8 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
+* Tue Jul 26 2011 - davec 0.1.0-1
+- Add prototype for scan_scaled
+- Define timespeccmp for platforms that need it
 * Tue Jul 03 2011 - davec 0.0.5-1
 - Create
