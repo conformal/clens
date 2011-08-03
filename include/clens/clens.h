@@ -25,9 +25,9 @@
 
 /* versioning */
 #define CLENS_VERSION_MAJOR	0
-#define CLENS_VERSION_MINOR	1
+#define CLENS_VERSION_MINOR	2
 #define CLENS_VERSION_PATCH	0
-#define CLENS_VERSION		"0.1.0"
+#define CLENS_VERSION		"0.2.0"
 
 void	clens_version(int *major, int *minor, int *patch);
 
@@ -68,6 +68,7 @@ void	clens_version(int *major, int *minor, int *patch);
 #define NEED_FMT_SCALED
 #define NEED_FGETLN
 #define NEED_FPARSELN
+#define NEED_STRTONUM
 
 #endif /* __linux__ */
 
@@ -108,5 +109,10 @@ char *fgetln(FILE *, size_t *);
 #ifdef NEED_FPARSELN
 char *fparseln(FILE *, size_t *, size_t *, const char [3], int);
 #endif /* NEED_FPARSELN */
+
+#ifdef NEED_STRTONUM
+long long strtonum(const char *numstr, long long minval, long long maxval,
+    const char **errstrp);
+#endif /* NEED_STRTONUM */
 
 #endif /* CLENS_H */

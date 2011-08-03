@@ -1,3 +1,9 @@
+clens (0.2.0-1) unstable; urgency=low
+
+  * Add strtonum for platforms that need it
+
+ -- Conformal Systems <package-discuss@conformal.com>  Wed, 03 Aug 2011 13:18:43 -0500
+
 clens (0.1.0-1) unstable; urgency=low
 
   * Add prototype for scan_scaled

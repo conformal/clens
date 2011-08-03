@@ -2,7 +2,7 @@
 
 
 LIB= clens
-SRCS+= clens.c arc4random_buf.c strnvis.c 
+SRCS+= clens.c arc4random_buf.c strnvis.c
 HDRS+= clens/clens.h
 HDRDIRS+= clens
 
