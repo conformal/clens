@@ -1,8 +1,9 @@
 clens (0.2.0-1) unstable; urgency=low
 
   * Add strtonum for platforms that need it
+  * Add RB_FOREACH_SAFE and RB_FOREACH_REVERSE_SAFE for platforms that need it
 
- -- Conformal Systems <package-discuss@conformal.com>  Wed, 03 Aug 2011 13:18:43 -0500
+ -- Conformal Systems <package-discuss@conformal.com>  Wed, 15 Aug 2011 14:17:26 -0500
 
 clens (0.1.0-1) unstable; urgency=low
 

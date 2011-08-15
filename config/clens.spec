@@ -48,8 +48,9 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
-* Wed Aug 03 2011 - davec 0.2.0-1
+* Wed Aug 15 2011 - davec 0.2.0-1
 - Add strtonum for platforms that need it
+- Add RB_FOREACH_SAFE and RB_FOREACH_REVERSE_SAFE for platforms that need it
 * Tue Jul 26 2011 - davec 0.1.0-1
 - Add prototype for scan_scaled
 - Define timespeccmp for platforms that need it
