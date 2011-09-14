@@ -51,8 +51,13 @@ void	clens_version(int *major, int *minor, int *patch);
 
 #ifdef __linux__
 #define SA_LEN(x)	sizeof(struct sockaddr)
-#define __dead 
+#ifdef __GNUC__
+#define __dead		__attribute__((__noreturn__))
 #define __packed	__attribute__((__packed__))
+#else
+#define __dead
+#define __packed
+#endif
 #ifndef PASS_MAX
 #define PASS_MAX	1024
 #endif /* PASS_MAX */
