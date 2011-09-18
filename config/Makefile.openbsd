@@ -1,4 +1,3 @@
-# $clens$
 NOPIC=
 
 .if defined(${COMPILER_VERSION})  &&  ${COMPILER_VERSION:L} == "gcc4"

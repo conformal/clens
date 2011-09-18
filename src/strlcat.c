@@ -1,4 +1,3 @@
-/* $clens$ */
 /*
  * Copyright (c) 2011 Conformal Systems LLC <info@conformal.com>
  *

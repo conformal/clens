@@ -1,4 +1,3 @@
-/* $clens$ */
 /*
  * Copyright (c) 2011 Conformal Systems LLC <info@conformal.com>
  *
@@ -17,7 +16,6 @@
 
 #include <clens.h>
 
-static const char *cvstag = "$clens$";
 static const char *vertag = "version: " CLENS_VERSION;
 
 void

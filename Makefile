@@ -1,4 +1,3 @@
-# $clens$
 
 
 LIB= clens

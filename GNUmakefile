@@ -1,4 +1,3 @@
-# $clens$
 
 LIB.NAME = clens
 LIB.SRCS = clens.c arc4random_buf.c strnvis.c strlcat.c strlcpy.c

@@ -1,4 +1,3 @@
-# $clens$
 
 %define name		clens
 %define version		0.2.0
