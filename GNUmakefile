@@ -1,8 +1,7 @@
-
 LIB.NAME = clens
 LIB.SRCS = clens.c arc4random_buf.c strnvis.c strlcat.c strlcpy.c
 LIB.SRCS += strtonum.c fmt_scaled.c fgetln.c fparseln.c
-LIB.HEADERS = clens/clens.h 
+LIB.HEADERS = clens/clens.h
 LIB.HDRDIRS = clens
 
 CPPFLAGS +=
@@ -10,7 +9,7 @@ INCFLAGS += -I include/clens
 WARNFLAGS += -Wall -Werror
 DEBUG += -g
 CFLAGS += $(INCFLAGS) $(WARNFLAGS) $(DEBUG)
-LDFLAGS += 
+LDFLAGS +=
 
 
 # Attempt to include platform specific makefile.
@@ -29,7 +28,7 @@ INCDIR ?= ${LOCALBASE}/include
 # Use obj directory if it exists.
 OBJPREFIX ?= obj/
 ifeq "$(wildcard $(OBJPREFIX))" ""
-	OBJPREFIX =	
+	OBJPREFIX =
 endif
 
 # System utils.
@@ -60,10 +59,10 @@ $(OBJPREFIX)%.o: %.c
 	@echo "Generating $@.depend"
 	@$(CC) $(INCFLAGS) -MM $(CPPFLAGS) $< | \
 	sed 's,$*\.o[ :]*,$@ $@.depend : ,g' > $@.depend
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $< 
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 depend:
-	@echo "Dependencies are automatically generated.  This target is not necessary."	
+	@echo "Dependencies are automatically generated.  This target is not necessary."
 
 install:
 	$(INSTALL) -m 0755 -d $(DESTDIR)$(LIBDIR)/

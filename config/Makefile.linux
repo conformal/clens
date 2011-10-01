@@ -1,4 +1,3 @@
-
 ARFLAGS = crs
 
 LIB.STATIC = lib$(LIB.NAME).a

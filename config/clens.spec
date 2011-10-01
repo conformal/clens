@@ -1,4 +1,3 @@
-
 %define name		clens
 %define version		0.2.0
 %define release		1
