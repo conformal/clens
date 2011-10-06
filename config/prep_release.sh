@@ -7,10 +7,10 @@
 #   - Updates package control files with release notes
 #
 
-PROJECT=assl
+PROJECT=clens
 PROJECT_UC=$(echo $PROJECT | tr '[:lower:]' '[:upper:]')
 SCRIPT=$(basename $0)
-HEADER=../${PROJECT}.h
+HEADER=../include/${PROJECT}/${PROJECT}.h
 VER_PREFIX="$PROJECT_UC"
 RPM_SPEC=${PROJECT}.spec
 DEB_CHANGELOG=debian/changelog
