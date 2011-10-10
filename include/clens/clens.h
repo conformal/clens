@@ -23,10 +23,14 @@
 #define CLENS_H
 
 /* versioning */
+#define CLENS_STRINGIFY(x)	#x
+#define CLENS_STR(x)		CLENS_STRINGIFY(x)
 #define CLENS_VERSION_MAJOR	0
 #define CLENS_VERSION_MINOR	2
 #define CLENS_VERSION_PATCH	0
-#define CLENS_VERSION		"0.2.0"
+#define CLENS_VERSION		CLENS_STR(CLENS_VERSION_MAJOR) "." \
+				CLENS_STR(CLENS_VERSION_MINOR) "." \
+				CLENS_STR(CLENS_VERSION_PATCH)
 
 void	clens_version(int *major, int *minor, int *patch);
 
