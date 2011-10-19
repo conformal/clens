@@ -32,7 +32,8 @@
 				CLENS_STR(CLENS_VERSION_MINOR) "." \
 				CLENS_STR(CLENS_VERSION_PATCH)
 
-void	clens_version(int *major, int *minor, int *patch);
+const char	*clens_verstring(void);
+void		 clens_version(int *major, int *minor, int *patch);
 
 #include <sys/time.h>
 
