@@ -99,7 +99,7 @@ int strnvis(char *dst, const char *src, size_t size, int flag);
 #endif /* NEED_STRNVIS */
 
 #ifdef NEED_STRNUNVIS
-int strnunvis(char *dst, const char *src, size_t size);
+ssize_t strnunvis(char *dst, const char *src, size_t size);
 #endif /* NEED_STRNUNVIS */
 
 #ifdef NEED_STRLCAT
