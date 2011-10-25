@@ -1,7 +1,7 @@
 BUILDVERSION != sh "${.CURDIR}/buildver.sh"
 
 LIB= clens
-SRCS+= clens.c arc4random_buf.c strnvis.c
+SRCS+= clens.c arc4random_buf.c strnvis.c strnunvis.c
 HDRS+= clens/clens.h
 .if !${BUILDVERSION} == ""
 CPPFLAGS+= -DBUILDSTR=\"$(BUILDVERSION)\"

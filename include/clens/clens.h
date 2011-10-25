@@ -48,6 +48,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 
 #define NEED_ARC4RANDOM_BUF
 #define NEED_STRNVIS
+#define NEED_STRNUNVIS
 #define NEED_FMT_SCALED
 #define NEED_FGETLN
 #define NEED_FPARSELN
@@ -72,6 +73,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 
 #define NEED_ARC4RANDOM_BUF
 #define NEED_STRNVIS
+#define NEED_STRNUNVIS
 #define NEED_STRLCAT
 #define NEED_STRLCPY
 #define NEED_FMT_SCALED
@@ -93,8 +95,12 @@ void arc4random_buf(void *buf, size_t nbytes);
 #endif /* NEED_ARC4RANDOM_BUF */
 
 #ifdef NEED_STRNVIS
-int strnvis(char *dst, const char *src, size_t siz, int flag);
+int strnvis(char *dst, const char *src, size_t size, int flag);
 #endif /* NEED_STRNVIS */
+
+#ifdef NEED_STRNUNVIS
+int strnunvis(char *dst, const char *src, size_t size);
+#endif /* NEED_STRNUNVIS */
 
 #ifdef NEED_STRLCAT
 size_t strlcat(char *, const char *, size_t);
