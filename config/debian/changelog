@@ -1,3 +1,11 @@
+clens (0.3.0-1) unstable; urgency=low
+
+  * Add strnunvis for platforms that need it
+  * Properly define __dead and __packed attributes for gcc compiler
+  * Misc cleanup and build versioning
+
+ -- Conformal Systems <package-discuss@conformal.com>  Thu, 27 Oct 2011 17:43:08 -0500
+
 clens (0.2.0-1) unstable; urgency=low
 
   * Add strtonum for platforms that need it

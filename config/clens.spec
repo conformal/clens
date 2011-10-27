@@ -1,5 +1,5 @@
 %define name		clens
-%define version		0.2.0
+%define version		0.3.0
 %define release		1
 
 Name: 		%{name}
@@ -46,6 +46,10 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
+* Thu Oct 27 2011 - davec 0.3.0-1
+- Add strnunvis for platforms that need it
+- Properly define __dead and __packed attributes for gcc compiler
+- Misc cleanup and build versioning
 * Wed Aug 15 2011 - davec 0.2.0-1
 - Add strtonum for platforms that need it
 - Add RB_FOREACH_SAFE and RB_FOREACH_REVERSE_SAFE for platforms that need it
