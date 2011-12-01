@@ -77,7 +77,6 @@ typedef struct {
 #define	GLOB_NOMATCH	(-3)	/* No match and GLOB_NOCHECK not set. */
 #define	GLOB_NOSYS	(-4)	/* Function not supported. */
 
-#if __BSD_VISIBLE
 #define	GLOB_ALTDIRFUNC	0x0040	/* Use alternately specified directory funcs. */
 #define	GLOB_BRACE	0x0080	/* Expand braces ala csh. */
 #define	GLOB_MAGCHAR	0x0100	/* Pattern had globbing characters. */
@@ -87,7 +86,6 @@ typedef struct {
 #define GLOB_LIMIT	0x2000	/* Limit pattern match output to ARG_MAX */
 #define	GLOB_KEEPSTAT	0x4000	/* Retain stat data for paths in gl_statv. */
 #define GLOB_ABEND	GLOB_ABORTED /* backward compatibility */
-#endif
 
 __BEGIN_DECLS
 int	glob(const char *, int, int (*)(const char *, int), glob_t *);
