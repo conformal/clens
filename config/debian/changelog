@@ -1,3 +1,9 @@
+clens (0.4.0-1) unstable; urgency=low
+
+  * Add glob with BSD extensions for platforms that need it
+
+ -- Conformal Systems <package-discuss@conformal.com>  Fri, 06 Jan 2012 15:15:06 -0600
+
 clens (0.3.0-1) unstable; urgency=low
 
   * Add strnunvis for platforms that need it
