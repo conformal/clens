@@ -25,7 +25,7 @@ BINDIR ?= ${LOCALBASE}/bin
 LIBDIR ?= ${LOCALBASE}/lib
 INCDIR ?= ${LOCALBASE}/include
 
-BUILDVERSION=$(shell sh ${CURDIR}/../buildver.sh)
+BUILDVERSION=$(shell sh ${CURDIR}/buildver.sh)
 ifneq ("${BUILDVERSION}", "")
 CPPFLAGS+= -DBUILDSTR=\"$(BUILDVERSION)\"
 endif
