@@ -1,0 +1,5 @@
+lib/libclens.a
+lib/libclens_p.a
+include/clens/clens.h
+include/clens/sys/tree.h
+include/clens/sys/queue.h
