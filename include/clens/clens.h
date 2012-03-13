@@ -36,6 +36,7 @@ const char	*clens_verstring(void);
 void		 clens_version(int *major, int *minor, int *patch);
 
 #include <sys/time.h>
+#include <stdint.h>
 
 #ifdef __FreeBSD__
 #define SA_LEN(x)      ((x)->sa_len)
@@ -47,6 +48,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NO_UTIL_H
 
 #define NEED_ARC4RANDOM_BUF
+#define NEED_ARC4RANDOM_UNIFORM
 #define NEED_STRNVIS
 #define NEED_STRNUNVIS
 #define NEED_FMT_SCALED
@@ -72,6 +74,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NO_UTIL_H
 
 #define NEED_ARC4RANDOM_BUF
+#define NEED_ARC4RANDOM_UNIFORM
 #define NEED_STRNVIS
 #define NEED_STRNUNVIS
 #define NEED_STRLCAT
@@ -93,6 +96,10 @@ void		 clens_version(int *major, int *minor, int *patch);
 #ifdef NEED_ARC4RANDOM_BUF
 void arc4random_buf(void *buf, size_t nbytes);
 #endif /* NEED_ARC4RANDOM_BUF */
+
+#ifdef NEED_ARC4RANDOM_UNIFORM
+uint32_t arc4random_uniform(uint32_t upper_bound);
+#endif
 
 #ifdef NEED_STRNVIS
 int strnvis(char *dst, const char *src, size_t size, int flag);
