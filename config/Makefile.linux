@@ -5,3 +5,5 @@ LIB.HEADERS += clens/readpassphrase.h clens/glob.h clens/sys/tree.h
 LIB.HEADERS += clens/sys/queue.h
 LIB.HDRDIRS += clens/sys
 
+CFLAGS += $(shell pkg-config --cflags libbsd)
+

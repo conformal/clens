@@ -53,7 +53,12 @@
 
 #include <sys/types.h>
 #include <ctype.h>
+
+#ifdef __linux__
+#include <bsd/vis.h>
+#else
 #include <vis.h>
+#endif
 
 ssize_t
 strnunvis(char *dst, const char *src, size_t sz)
