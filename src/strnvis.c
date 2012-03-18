@@ -53,11 +53,7 @@
 #include <limits.h>
 #include <sys/types.h>
 
-#ifdef __linux__
-#include <bsd/vis.h>
-#else
 #include <vis.h>
-#endif
 #define isoctal(c)	(((u_char)(c)) >= '0' && ((u_char)(c)) <= '7')
 #define isvisible(c)							\
 	(((uint)(c) <= UCHAR_MAX && isascii((u_char)(c)) &&		\
