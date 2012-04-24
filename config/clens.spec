@@ -1,5 +1,5 @@
 %define name		clens
-%define version		0.4.0
+%define version		0.5.0
 %define release		1
 
 Name: 		%{name}
@@ -46,6 +46,9 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
+* Tue Apr 24 2012 - drahn 0.5.0-1
+- add arc4random_uniform from openbsd libc
+- Other minor cleanup and bug fixes
 * Fri Jan 06 2012 - davec 0.4.0-1
 - Add glob with BSD extensions for platforms that need it
 * Thu Oct 27 2011 - davec 0.3.0-1

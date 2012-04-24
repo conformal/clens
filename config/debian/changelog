@@ -1,3 +1,10 @@
+clens (0.5.0-1) unstable; urgency=low
+
+  * add arc4random_uniform from openbsd libc
+  * Other minor cleanup and bug fixes
+
+ -- Conformal Systems <package-discuss@conformal.com>  Tue, 24 Apr 2012 09:58:22 -0500
+
 clens (0.4.0-1) unstable; urgency=low
 
   * Add glob with BSD extensions for platforms that need it
