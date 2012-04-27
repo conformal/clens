@@ -1,7 +1,6 @@
 LIB.NAME = clens
-LIB.SRCS = clens.c arc4random_buf.c strnvis.c strnunvis.c strlcat.c strlcpy.c
-LIB.SRCS += strtonum.c fmt_scaled.c fgetln.c fparseln.c glob.c
-LIB.SRCS += arc4random_uniform.c
+LIB.SRCS = clens.c arc4random_buf.c strlcat.c strlcpy.c strtonum.c fmt_scaled.c
+LIB.SRCS += fgetln.c fparseln.c glob.c arc4random_uniform.c
 LIB.HEADERS = clens/clens.h
 LIB.HDRDIRS = clens
 
