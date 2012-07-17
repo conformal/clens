@@ -1,5 +1,5 @@
 %define name		clens
-%define version		0.5.0
+%define version		0.6.0
 %define release		1
 
 Name: 		%{name}
@@ -46,6 +46,9 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
+* Tue Jul 17 2012 - davec 0.6.0-1
+- Remove strnvis and strunvis
+- Update to newer queue.h which supports *_FOREACH_SAFE
 * Tue Apr 24 2012 - drahn 0.5.0-1
 - add arc4random_uniform from openbsd libc
 - Other minor cleanup and bug fixes

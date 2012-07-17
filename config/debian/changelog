@@ -1,3 +1,10 @@
+clens (0.6.0-1) unstable; urgency=low
+
+  * Remove strnvis and strunvis
+  * Update to newer queue.h which supports *_FOREACH_SAFE
+
+ -- Conformal Systems <package-discuss@conformal.com>  Tue, 17 Jul 2012 18:57:01 -0500
+
 clens (0.5.0-1) unstable; urgency=low
 
   * add arc4random_uniform from openbsd libc
