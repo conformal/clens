@@ -56,7 +56,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NEED_FPARSELN
 #endif /* __FreeBSD__ */
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__CYGWIN__)
 #define SA_LEN(x)	sizeof(struct sockaddr)
 #ifdef __GNUC__
 #define __dead		__attribute__((__noreturn__))
@@ -84,7 +84,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NEED_FPARSELN
 #define NEED_STRTONUM
 
-#endif /* __linux__ */
+#endif /* __linux__ || __CYGWIN__ */
 
 #ifndef timespeccmp
 #define	timespeccmp(tsp, usp, cmp)					\

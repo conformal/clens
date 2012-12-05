@@ -22,7 +22,7 @@
 #include <stdint.h>
 #include <sys/types.h>
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__CYGWIN__)
 #include <bsd/stdlib.h>
 #endif
 
