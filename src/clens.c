@@ -17,9 +17,9 @@
 #include <clens.h>
 
 #ifdef BUILDSTR
-static const char *vertag = "version: " CLENS_VERSION " " BUILDSTR;
+static const char *vertag = CLENS_VERSION " " BUILDSTR;
 #else
-static const char *vertag = "version: " CLENS_VERSION;
+static const char *vertag = CLENS_VERSION;
 #endif
 
 const char *
@@ -34,5 +34,4 @@ clens_version(int *major, int *minor, int *patch)
 	*major = CLENS_VERSION_MAJOR;
 	*minor = CLENS_VERSION_MINOR;
 	*patch = CLENS_VERSION_PATCH;
-	/* Portable way to avoid unused variable compile warnings */
 }
