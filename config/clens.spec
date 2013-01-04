@@ -1,5 +1,5 @@
 %define name		clens
-%define version		0.6.0
+%define version		0.6.1
 %define release		1
 
 Name: 		%{name}
@@ -46,6 +46,10 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
+* Fri Jan 04 2013 - davec 0.6.1-1
+- Add support for Bitrig
+- Add support for cygwin
+- Remove the 'version: ' prefix from clens_verstring
 * Tue Jul 17 2012 - davec 0.6.0-1
 - Remove strnvis and strunvis
 - Update to newer queue.h which supports *_FOREACH_SAFE
