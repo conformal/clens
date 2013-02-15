@@ -57,12 +57,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define FPARSELN_UNESCESC	0x01
-#define FPARSELN_UNESCCONT	0x02
-#define FPARSELN_UNESCCOMM	0x04
-#define FPARSELN_UNESCREST	0x08
-#define FPARSELN_UNESCALL	0x0f
-
 static int isescaped(const char *, const char *, int);
 
 /* isescaped():
