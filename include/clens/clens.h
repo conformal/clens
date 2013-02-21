@@ -84,6 +84,14 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NEED_FPARSELN
 #define NEED_STRTONUM
 
+#if ( __WORDSIZE == 64 ) /* 64 bit */
+#define	ALIGNBYTES	(sizeof(long) - 1)
+#define	ALIGN(p)	(((unsigned long)(p) + ALIGNBYTES) &~ALIGNBYTES)
+#else /* 32bit */
+#define	ALIGNBYTES	(sizeof(int) - 1)
+#define	ALIGN(p)	(((unsigned int)(p) + ALIGNBYTES) &~ALIGNBYTES)
+#endif
+
 #endif /* __linux__ || __CYGWIN__ */
 
 #ifndef timespeccmp
