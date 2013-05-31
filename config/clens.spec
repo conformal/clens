@@ -1,5 +1,5 @@
 %define name		clens
-%define version		0.6.1
+%define version		0.7.0
 %define release		1
 
 Name: 		%{name}
@@ -46,6 +46,9 @@ develop applications with clens.
 /usr/lib/libclens.a
 
 %changelog
+* Fri May 31 2013 - davec 0.7.0-1
+- Export fparseln flags if needed
+- Add ALIGNBYTES and ALIGN for Linux
 * Fri Jan 04 2013 - davec 0.6.1-1
 - Add support for Bitrig
 - Add support for cygwin
