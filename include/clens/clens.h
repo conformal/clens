@@ -94,6 +94,21 @@ void		 clens_version(int *major, int *minor, int *patch);
 
 #endif /* __linux__ || __CYGWIN__ */
 
+#ifdef __APPLE__
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define NEED_ARC4RANDOM_BUF
+#define NEED_ARC4RANDOM_UNIFORM
+#define NEED_STRNVIS
+#define NEED_STRNUNVIS
+#define NEED_FMT_SCALED
+#define NEED_FGETLN
+#define NEED_FPARSELN
+#define NEED_STRTONUM
+#endif /* __APPLE__ */
+
 #ifndef timespeccmp
 #define	timespeccmp(tsp, usp, cmp)					\
 	(((tsp)->tv_sec == (usp)->tv_sec) ?				\

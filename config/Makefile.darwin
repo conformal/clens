@@ -1,0 +1,7 @@
+ARFLAGS = crs
+
+LIB.STATIC = lib$(LIB.NAME).a
+LIB.HEADERS += clens/readpassphrase.h clens/glob.h clens/sys/tree.h
+LIB.HEADERS += clens/sys/queue.h
+LIB.HDRDIRS += clens/sys
+SRCS+= fmt_scaled.c fgetln.c fparseln.c
