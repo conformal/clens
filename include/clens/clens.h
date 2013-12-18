@@ -107,6 +107,8 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NEED_FGETLN
 #define NEED_FPARSELN
 #define NEED_STRTONUM
+
+#define SA_LEN(x)	((x)->sa_len)
 #endif /* __APPLE__ */
 
 #ifndef timespeccmp
