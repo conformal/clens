@@ -108,6 +108,7 @@ void		 clens_version(int *major, int *minor, int *patch);
 #define NEED_FPARSELN
 #define NEED_STRTONUM
 
+#define __packed	__attribute__((__packed__))
 #define SA_LEN(x)	((x)->sa_len)
 #endif /* __APPLE__ */
 
