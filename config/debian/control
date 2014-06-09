@@ -1,14 +1,15 @@
 Source: clens
 Priority: optional
 Maintainer: Conformal Systems LLC <package-discuss@conformal.com>
-Build-Depends: debhelper (>= 7), libc6-dev, locales
-Standards-Version: 3.8.3
+Build-Depends: debhelper (>= 9), libbsd-dev
+Standards-Version: 3.9.5
 Section: libs
 Homepage: http://opensource.conformal.com/wiki/clens
 
 Package: libclens-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: libbsd-dev
 Description: Convenience library to aid in porting OpenBSD code - development
  This package contains the libraries, include files, and documentation
